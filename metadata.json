@@ -1,0 +1,6 @@
+{
+  "name": "SecureAuth 2FA",
+  "description": "Two-Factor Authentication (2FA) app with TOTP, QR codes, backup recovery keys, biometric unlock, and AdMob integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Each user can only read and modify their own account data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Hashed one-time backup recovery codes
+      match /backup_codes/{codeHash} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+      
+      // Active device sessions
+      match /sessions/{sessionId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+  }
+}
